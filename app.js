@@ -2,15 +2,19 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const bodyParser = require('body-parser');
-const {PORT, MONGO_URI } = process.env;
 
-app.use(bodyParser.urlencoded({extended: true}));
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-const offer = require('./models/offer');
+const {PORT, MONGO_URI } = process.env;
+const { swaggerUi, specs } = require('./modules/swagger');
 
-const router = require('./routes')(app, offer);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+const product = require('./models/product');
+
+const router = require('./routes')(app, product);
 
 const db = mongoose.connection;
 db.on('error', console.error);

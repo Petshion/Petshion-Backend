@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var offerschema = new Schema({
+var productschema = new Schema({
     title: {
         type: String,
         required: true
@@ -14,7 +14,7 @@ var offerschema = new Schema({
         type: String,
     },//브랜드 이름
     price: {    
-        type: String,
+        type: Number,
         required: true
     },//가격
     kind: {
@@ -25,14 +25,22 @@ var offerschema = new Schema({
         type: String,
     },//내용
     size_content: {
-        type: String,
+        type: [[String]],
         required: true
-    },//뭐였지
+    },//사이즈표
     size: {
         type: String,
         required: true
     },//동물 크기
+    rate: {
+        type: Number
+    },
+    tag:{
+        type: [String]
+    }
 });
 
 
-module.exports = mongoose.model('offer', offerschema);
+module.exports = mongoose.model('Product', productschema);
+
+    
