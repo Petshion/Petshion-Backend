@@ -1,22 +1,18 @@
-const swaggerUi = require('swagger-ui-express');
-const swaggereJsdoc = require('swagger-jsdoc');
+const swaggerAutogen = require('swagger-autogen')();
 
 const options = {
-    swaggerDefinition: {
         info: {
-            title: 'Test API',
+            title: 'Petshion API',
             version: '1.0.0',
-            description: 'Test API with express',
+            description: 'Petshion API with express',
         },
         host: 'localhost:4500',
-        basePath: '/'
-    },
-    apis: ['./routes/*.js', './swagger/*']
+        schemes: ['http'],
 };
 
-const specs = swaggereJsdoc(options);
+const outputFile = './swagger-output.json';
+const endpointsFiles = [
+    "./routes/index.js"
+]
 
-module.exports = {
-    swaggerUi,
-    specs
-};
+swaggerAutogen(outputFile, endpointsFiles, options);

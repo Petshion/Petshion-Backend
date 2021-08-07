@@ -3,14 +3,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 const {PORT, MONGO_URI } = process.env;
-const { swaggerUi, specs } = require('./modules/swagger');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require("./swagger-output");
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 const product = require('./models/product');
 

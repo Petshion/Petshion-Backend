@@ -1,0 +1,110 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Petshion API",
+    "version": "1.0.0",
+    "description": "Petshion API with express"
+  },
+  "host": "localhost:4500",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/product": {
+      "post": {
+        "tags": ["Product"],
+        "description": "상품 정보 등록",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "string"
+                },
+                "images": {
+                  "example": "array"
+                },
+                "Brand_name": {
+                  "example": "string"
+                },
+                "price": {
+                  "example": "number"
+                },
+                "kind": {
+                  "example": "string"
+                },
+                "content": {
+                  "example": "string"
+                },
+                "size": {
+                  "example": "string"
+                },
+                "tag": {
+                  "example": "array"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/product/{product_id}": {
+      "get": {
+        "tags": ["Product"],
+        "description": "특정 상품 정보 요청",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/main": {
+      "get": {
+        "tags": ["Product"],
+        "description": "메인화면(상품 순서대로 10개 요청)",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "tags": ["Product"],
+        "description": "검색화면(태그별 상품 검색)",
+        "parameters": [],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}
