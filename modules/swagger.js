@@ -7,7 +7,7 @@ const options = {
             description: 'Petshion API with express',
         },
         host: 'petshion.herokuapp.com',
-        schemes: ['http'],
+        schemes: ['https'],
 };
 
 const outputFile = './swagger-output.json';
