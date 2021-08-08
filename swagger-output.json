@@ -16,8 +16,8 @@
   "paths": {
     "/product": {
       "post": {
-        "tags": ["Product"],
-        "description": "상품 정보 등록",
+        "tags": [],
+        "description": "",
         "parameters": [
           {
             "name": "obj",
@@ -26,28 +26,28 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "string"
+                  "example": "any"
                 },
                 "images": {
-                  "example": "array"
+                  "example": "any"
                 },
                 "Brand_name": {
-                  "example": "string"
+                  "example": "any"
                 },
                 "price": {
-                  "example": "number"
+                  "example": "any"
                 },
                 "kind": {
-                  "example": "string"
+                  "example": "any"
                 },
                 "content": {
-                  "example": "string"
+                  "example": "any"
                 },
                 "size": {
-                  "example": "string"
+                  "example": "any"
                 },
                 "tag": {
-                  "example": "array"
+                  "example": "any"
                 }
               }
             }
@@ -58,8 +58,8 @@
     },
     "/product/{product_id}": {
       "get": {
-        "tags": ["Product"],
-        "description": "특정 상품 정보 요청",
+        "tags": [],
+        "description": "",
         "parameters": [
           {
             "name": "product_id",
@@ -80,8 +80,8 @@
     },
     "/main": {
       "get": {
-        "tags": ["Product"],
-        "description": "메인화면(상품 순서대로 10개 요청)",
+        "tags": [],
+        "description": "",
         "parameters": [],
         "responses": {
           "500": {
@@ -90,11 +90,18 @@
         }
       }
     },
-    "/search": {
+    "/search/{tag}": {
       "get": {
-        "tags": ["Product"],
-        "description": "검색화면(태그별 상품 검색)",
-        "parameters": [],
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "404": {
             "description": "Not Found"

@@ -37,12 +37,14 @@ module.exports = function(app, product){
     }).limit(10)
   });
 
-  app.get('/search', (req, res)=>{
+  app.get('/search/:tag', (req, res)=>{
     product.findOne({tag: req.params.tag}, (err, product) =>{
       if(err) return res.status(500).json({error: err});
       if(!product) return res.status(404).json({error: 'product not found'});
       res.json(product);
     });
   })
+
+
 }
 
