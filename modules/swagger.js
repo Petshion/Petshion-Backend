@@ -6,7 +6,7 @@ const options = {
             version: '1.0.0',
             description: 'Petshion API with express',
         },
-        host: 'localhost:4500',
+        host: 'petshion.herokuapp.com',
         schemes: ['http'],
 };
 
