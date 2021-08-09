@@ -1,5 +1,8 @@
 module.exports = function(app, product){
-  
+  app.get('/',(req, res)=>{
+    res.end();
+  })
+
   app.post('/product',(req, res) =>{
     console.log(req.body);
     const Product = new product({
@@ -31,17 +34,26 @@ module.exports = function(app, product){
   });
 
   app.get('/main',(req, res)=>{
-    product.find((err, product)=>{
+      product.find({},{title:1, images:{$first: "$images"}}, (err, product)=>{
       if(err) return res.status(500).json({error: err});
-      res.json(product);
-    }).limit(10)
+      var pdt = [];
+      for(var i=0; i<product.length; i++){
+        var temp = {
+          images: product[i].images.toString(),
+          _id: product[i]._id,
+          title: product[i].title
+        };
+        pdt.push(temp);
+      }
+      res.json(pdt);
+    }).limit(10);
   });
 
   app.get('/search/:tag', (req, res)=>{
     product.findOne({tag: req.params.tag}, (err, product) =>{
       if(err) return res.status(500).json({error: err});
       if(!product) return res.status(404).json({error: 'product not found'});
-      res.json(product);
+      res.json(product.title, product.images);
     });
   })
 

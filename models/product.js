@@ -10,7 +10,7 @@ var productschema = new Schema({
         type: [String],
     },//이미지 파일 URL배열
     
-    Brand_name: {
+    brand_name: {
         type: String,
     },//브랜드 이름
     price: {    
@@ -37,6 +37,9 @@ var productschema = new Schema({
     },
     tag:{
         type: [String]
+    },
+    pickup:{
+        type: Boolean
     }
 });
 

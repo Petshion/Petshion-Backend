@@ -5,15 +5,24 @@
     "version": "1.0.0",
     "description": "Petshion API with express"
   },
-  "host": "petshion.herokuapp.com",
+  "host": "Petshion-env-1.eba-pmq8y9je.ap-northeast-2.elasticbeanstalk.com",
   "basePath": "/",
   "tags": [],
   "schemes": [
+    "http",
     "https"
   ],
   "consumes": [],
   "produces": [],
   "paths": {
+    "/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/product": {
       "post": {
         "tags": [],

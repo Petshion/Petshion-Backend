@@ -15,7 +15,6 @@ const swaggerFile = require("./swagger-output");
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 const product = require('./models/product');
-
 const router = require('./routes')(app, product);
 
 const db = mongoose.connection;
