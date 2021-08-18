@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "Petshion API with express"
   },
-  "host": "Petshion-env-1.eba-pmq8y9je.ap-northeast-2.elasticbeanstalk.com",
+  "host": "petshion-env-1.eba-pmq8y9je.ap-northeast-2.elasticbeanstalk.com",
   "basePath": "/",
   "tags": [],
   "schemes": [
@@ -15,17 +15,12 @@
   "consumes": [],
   "produces": [],
   "paths": {
-    "/": {
-      "get": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/product": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Product"
+        ],
+        "summary": "DB에 상품정보 등록",
         "description": "",
         "parameters": [
           {
@@ -55,6 +50,9 @@
                 "size": {
                   "example": "any"
                 },
+                "color": {
+                  "example": "any"
+                },
                 "tag": {
                   "example": "any"
                 }
@@ -67,7 +65,10 @@
     },
     "/product/{product_id}": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Product"
+        ],
+        "summary": "DB에 product_id의 상품정보 요청",
         "description": "",
         "parameters": [
           {
@@ -79,44 +80,65 @@
         ],
         "responses": {
           "404": {
-            "description": "Not Found"
+            "description": "찾을 수 없음"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "내부 서버 오류"
           }
         }
       }
     },
     "/main": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Product"
+        ],
+        "summary": "메인화면 요청",
         "description": "",
         "parameters": [],
         "responses": {
           "500": {
-            "description": "Internal Server Error"
+            "description": "내부 서버 오류"
           }
         }
       }
     },
-    "/search/{tag}": {
+    "/search": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Product"
+        ],
+        "summary": "필터링 검색 결과 요청",
         "description": "",
         "parameters": [
           {
-            "name": "tag",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "kind",
+            "in": "query",
+            "description": "종",
+            "type": "array",
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "크기",
+            "type": "array",
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "color",
+            "in": "query",
+            "description": "색깔",
+            "type": "array",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
           "404": {
-            "description": "Not Found"
+            "description": "찾을 수 없음"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "내부 서버 오류"
           }
         }
       }

@@ -29,17 +29,15 @@ var productschema = new Schema({
         required: true
     },//사이즈표
     size: {
-        type: String,
+        type: [String],
         required: true
     },//동물 크기
     rate: {
         type: Number
     },
-    tag:{
-        type: [String]
-    },
-    pickup:{
-        type: Boolean
+    color: {
+        type: [String],
+        required: true
     }
 });
 
