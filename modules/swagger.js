@@ -6,8 +6,8 @@ const options = {
             version: '1.0.0',
             description: 'Petshion API with express',
         },
-        host: 'petshion-env-1.eba-pmq8y9je.ap-northeast-2.elasticbeanstalk.com',
-        schemes: ['http','https'],
+        host:['petshion.herokuapp.com'],
+        schemes: ['https','http'],
 };
 
 const outputFile = './swagger-output.json';
