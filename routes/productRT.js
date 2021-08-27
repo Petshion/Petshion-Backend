@@ -60,7 +60,7 @@ module.exports = function(app, product){
 
   app.get('/search', (req, res)=>{
     /*  #swagger.tags = ['Product']
-        #swagger.summary = '필터링 검색 결과 요청'
+        #swagger.summary = '필터링 검색 결과'
         #swagger.parameters['kind'] = {
         in: 'query',
         description: '종',
