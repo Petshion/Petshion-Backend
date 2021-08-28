@@ -9,13 +9,16 @@ var Basket = new Schema({
     },
     size:{
         type: String
+    },
+    count:{
+        type: Number
     }
 })
 
 var userschema = new Schema({
     googleId: String,
-    email: String,
-    password: String,
+    name: String,
+    profileimg: String,
     basket: [{
         type: mongoose.Schema.Types.ObjectId,
         ref:'Basket'

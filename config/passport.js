@@ -5,24 +5,25 @@ const User = require('../models/user');
 passport.use(User.createStrategy());
 
 passport.serializeUser((user, done) => {
+    console.log("serialize");
     done(null, user.id);
 })
 passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
+        console.log("deserialize");
         done(err, user)
     })
 })
 
 passport.use(new googlestrategy({
     clientID: process.env.CLIENT_ID,
-    clientsecret: process.env.CLIENT_SECRET,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "https://petshion.herokuapp.com/auth/google/PetshionOauth"/* "http://localhost:4500/auth/google/PetshionOauth" */,
-    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
-        console.log(profile);
-
-        User.findOrCreate({ googleId: profile.id }, (err, user) => {
+        console.log(accessToken, refreshToken);
+        
+        User.findOrCreate({ googleId: profile.id, name: profile._json.name, profileimg: profile._json.picture }, (err, user) => {
             return cb(err, user);
         })
     }

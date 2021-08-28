@@ -108,7 +108,7 @@
         "tags": [
           "Product"
         ],
-        "summary": "필터링 검색 결과 요청",
+        "summary": "필터링 검색 결과",
         "description": "",
         "parameters": [
           {

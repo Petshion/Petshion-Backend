@@ -23,6 +23,7 @@ const Passport = require('passport');
 app.use(Passport.initialize());
 app.use(Passport.session());
 
+
 const productrouter = require('./routes/productRT')(app, product);
 const userrouter = require('./routes/userRT')(app, user);
 
