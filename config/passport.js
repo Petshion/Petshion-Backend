@@ -25,7 +25,7 @@ passport.use(new googlestrategy({
         console.log(accessToken, refreshToken);
         User.findOrCreate({ googleId: profile.id, username: profile.displayName, image: profile._json.picture}, function (err, user) {
             var usercb = {
-                _id: user._id,
+                id: user._id,
                 access_token: accessToken,
                 refresh_token: refreshToken,
                 userName: user.username,
