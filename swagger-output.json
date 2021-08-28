@@ -143,25 +143,27 @@
         }
       }
     },
-    "/auth/google": {
+    "/pawmark": {
       "get": {
-        "tags": [],
+        "tags": [
+          "PawMark"
+        ],
+        "summary": "발도장 조회",
         "description": "",
         "parameters": [],
-        "responses": {}
-      }
-    },
-    "/auth/google/PetshionOauth": {
-      "get": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "401": {
+            "description": "권한 없음"
+          }
+        }
       }
     },
     "/pawmark/add": {
       "post": {
-        "tags": [],
+        "tags": [
+          "PawMark"
+        ],
+        "summary": "발도장 추가",
         "description": "",
         "parameters": [
           {
@@ -188,8 +190,11 @@
       }
     },
     "/pawmark/remove": {
-      "put": {
-        "tags": [],
+      "delete": {
+        "tags": [
+          "PawMark"
+        ],
+        "summary": "발도장 제거",
         "description": "",
         "parameters": [
           {
@@ -206,15 +211,21 @@
           }
         ],
         "responses": {
+          "401": {
+            "description": "권한 없음"
+          },
           "500": {
             "description": "내부 서버 오류"
           }
         }
       }
     },
-    "/pawmark": {
+    "/basket": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Basket"
+        ],
+        "summary": "장바구니 조회",
         "description": "",
         "parameters": [],
         "responses": {
@@ -226,7 +237,10 @@
     },
     "/basket/add": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Basket"
+        ],
+        "summary": "장바구니 추가",
         "description": "",
         "parameters": [
           {
@@ -252,6 +266,9 @@
           }
         ],
         "responses": {
+          "401": {
+            "description": "권한 없음"
+          },
           "500": {
             "description": "내부 서버 오류"
           }
@@ -260,7 +277,10 @@
     },
     "/basket/remove": {
       "delete": {
-        "tags": [],
+        "tags": [
+          "Basket"
+        ],
+        "summary": "장바구니 제거",
         "description": "",
         "parameters": [
           {
@@ -277,20 +297,11 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "내부 서버 오류"
-          }
-        }
-      }
-    },
-    "/basket": {
-      "get": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
-        "responses": {
           "401": {
             "description": "권한 없음"
+          },
+          "500": {
+            "description": "내부 서버 오류"
           }
         }
       }

@@ -3,7 +3,7 @@ const MongoQS = require('mongo-querystring');
 module.exports = function(app, product){
   app.get('/',(req, res)=>{
     //#swagger.ignore = true
-    res.end();
+    res.status(200).end();
   })
 
   app.post('/product',(req, res) =>{
