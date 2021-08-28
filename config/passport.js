@@ -6,7 +6,7 @@ passport.use(User.createStrategy());
 
 passport.serializeUser((user, done) => {
     console.log("serialize");
-    done(null, user.access_token);
+    done(null, user.id);
 })
 passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
@@ -25,6 +25,7 @@ passport.use(new googlestrategy({
         console.log(accessToken, refreshToken);
         User.findOrCreate({ googleId: profile.id, username: profile.displayName, image: profile._json.picture}, function (err, user) {
             var usercb = {
+                _id: user._id,
                 access_token: accessToken,
                 refresh_token: refreshToken,
                 userName: user.username,
