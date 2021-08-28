@@ -19,11 +19,12 @@ passport.use(new googlestrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "https://petshion.herokuapp.com/auth/google/PetshionOauth"/* "http://localhost:4500/auth/google/PetshionOauth" */,
+    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
         console.log(accessToken, refreshToken);
         
-        User.findOrCreate({ googleId: profile.id, name: profile._json.name, profileimg: profile._json.picture }, (err, user) => {
+        User.findOrCreate({ googleId: profile.id, username: profile.displayName }, (err, user) => {
             return cb(err, user);
         })
     }

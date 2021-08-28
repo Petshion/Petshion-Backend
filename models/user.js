@@ -17,8 +17,7 @@ var Basket = new Schema({
 
 var userschema = new Schema({
     googleId: String,
-    name: String,
-    profileimg: String,
+    username: String,
     basket: [{
         type: mongoose.Schema.Types.ObjectId,
         ref:'Basket'
