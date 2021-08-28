@@ -6,7 +6,7 @@ passport.use(User.createStrategy());
 
 passport.serializeUser((user, done) => {
     console.log("serialize");
-    done(null, user.id);
+    done(null, user.AT);
 })
 passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
@@ -18,15 +18,19 @@ passport.deserializeUser((id, done) => {
 passport.use(new googlestrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://petshion.herokuapp.com/auth/google/PetshionOauth"/* "http://localhost:4500/auth/google/PetshionOauth" */,
+    callbackURL: /* "https://petshion.herokuapp.com/auth/google/PetshionOauth" */"http://localhost:4500/auth/google/PetshionOauth",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
         console.log(accessToken, refreshToken);
+        var usertk = {
+            access_token: accessToken,
+            refresh_token: refreshToken
+        }
+        User.findOrCreate({ googleId: profile.id, username: profile.displayName }, function (err, user) {
+            return cb(err, usertk);
+        });
         
-        User.findOrCreate({ googleId: profile.id, username: profile.displayName }, (err, user) => {
-            return cb(err, user);
-        })
     }
 ));
 module.exports = passport;
