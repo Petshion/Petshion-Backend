@@ -18,7 +18,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new googlestrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: /* "https://petshion.herokuapp.com/auth/google/PetshionOauth" */"http://localhost:4500/auth/google/PetshionOauth",
+    callbackURL: "https://petshion.herokuapp.com/auth/google/PetshionOauth"/* "http://localhost:4500/auth/google/PetshionOauth" */,
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
