@@ -6,7 +6,7 @@ passport.use(User.createStrategy());
 
 passport.serializeUser((user, done) => {
     console.log("serialize");
-    done(null, user.AT);
+    done(null, user.access_token);
 })
 passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
