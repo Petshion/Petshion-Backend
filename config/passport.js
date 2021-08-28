@@ -23,12 +23,14 @@ passport.use(new googlestrategy({
 },
     function (accessToken, refreshToken, profile, cb) {
         console.log(accessToken, refreshToken);
-        var usertk = {
-            access_token: accessToken,
-            refresh_token: refreshToken
-        }
-        User.findOrCreate({ googleId: profile.id, username: profile.displayName }, function (err, user) {
-            return cb(err, usertk);
+        User.findOrCreate({ googleId: profile.id, username: profile.displayName, image: profile._json.picture}, function (err, user) {
+            var usercb = {
+                access_token: accessToken,
+                refresh_token: refreshToken,
+                userName: user.username,
+                userImage: user.image
+            }
+            return cb(err, usercb);
         });
         
     }
